@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ever
+    ports:
+      - '5432:5432'
+    volumes:
+      - task_force_db:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+    depends_on:
+      - postgres
+    ports:
+      - '5000:5000'
+
+volumes:
+  task_force_db:

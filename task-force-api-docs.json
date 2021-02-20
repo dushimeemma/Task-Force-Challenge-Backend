@@ -1,0 +1,267 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Task Force Challenge APIs docs",
+    "version": "1.0.0",
+    "title": "Task Force Challenge",
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/dushimeemma/Task-Force-Challenge-Backend/1.0.0",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api/auth/signup": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Create new user",
+        "description": "Create new user",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "the user to create",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfull user created"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Authenticate user",
+        "description": "Authenticate a user",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user to authenticate",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/user_1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful login"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/api/docss": {
+      "get": {
+        "tags": [
+          "Docs"
+        ],
+        "summary": "Get swagger docs",
+        "description": "Get swagger docs",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful pull of articles"
+          }
+        }
+      }
+    },
+    "/api/todos": {
+      "get": {
+        "tags": [
+          "Todo"
+        ],
+        "summary": "Get all todos",
+        "description": "Get all todos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful pull of articles"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Todo"
+        ],
+        "summary": "create new todo",
+        "description": "create new todo",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "todo",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful add article"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/todos/{Id}": {
+      "get": {
+        "tags": [
+          "Todo"
+        ],
+        "summary": "Get single todo",
+        "description": "Get single todo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful pull of articles"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Todo"
+        ],
+        "summary": "Update a todo",
+        "description": "Update todo given id",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful updated"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Todo"
+        ],
+        "summary": "Delete a todo",
+        "description": "Delete todo given id",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful deleted"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "todo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Post One"
+        },
+        "body": {
+          "type": "string",
+          "example": "The very post number one in learning swagger API documentation"
+        }
+      }
+    },
+    "user_1": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "dushimeemma@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Password@12345"
+        }
+      }
+    },
+    "user": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Dushime Emmanuel"
+        },
+        "email": {
+          "type": "string",
+          "example": "dushimeemma@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Password@12345"
+        }
+      }
+    }
+  }
+}
